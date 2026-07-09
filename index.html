@@ -1,10 +1,94 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-CA">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-app</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Track fuel, parking, maintenance, insurance, receipts, mileage and tax deductible expenses in one place. Built for Uber, Uber Eats, DoorDash and gig workers across Canada."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://gigledger.ca/" />
+    <link rel="icon" type="image/svg+xml" href="/gig-ledger-logo.svg" />
+    <link rel="apple-touch-icon" href="/gig-ledger-logo.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gig Ledger" />
+    <meta
+      property="og:title"
+      content="Gig Expense Tracker Canada | Track Expenses & Save on Taxes"
+    />
+    <meta
+      property="og:description"
+      content="Track fuel, parking, maintenance, insurance, receipts, mileage and tax deductible expenses in one place. Built for Uber, Uber Eats, DoorDash and gig workers across Canada."
+    />
+    <meta property="og:url" content="https://gigledger.ca/" />
+    <meta
+      property="og:image"
+      content="https://gigledger.ca/og/gig-expense-tracker-canada.svg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Gig Expense Tracker Canada | Track Expenses & Save on Taxes"
+    />
+    <meta
+      name="twitter:description"
+      content="Track fuel, parking, maintenance, insurance, receipts, mileage and tax deductible expenses in one place. Built for Uber, Uber Eats, DoorDash and gig workers across Canada."
+    />
+    <meta
+      name="twitter:image"
+      content="https://gigledger.ca/og/gig-expense-tracker-canada.svg"
+    />
+
+    <script id="structured-data" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://gigledger.ca/#organization",
+            "name": "Gig Ledger",
+            "url": "https://gigledger.ca",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://gigledger.ca/gig-ledger-logo.svg",
+              "width": 512,
+              "height": 512
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://gigledger.ca/#website",
+            "name": "Gig Ledger",
+            "url": "https://gigledger.ca",
+            "publisher": {
+              "@id": "https://gigledger.ca/#organization"
+            },
+            "inLanguage": "en-CA"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gigledger.ca/#software-application",
+            "name": "Gig Ledger",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "url": "https://gigledger.ca",
+            "description": "Track fuel, parking, maintenance, insurance, receipts, mileage and tax deductible expenses in one place. Built for Uber, Uber Eats, DoorDash and gig workers across Canada.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "CAD"
+            }
+          }
+        ]
+      }
+    </script>
+    <title>Gig Expense Tracker Canada | Track Expenses & Save on Taxes</title>
   </head>
   <body>
     <div id="root"></div>
