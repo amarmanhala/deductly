@@ -244,6 +244,12 @@ insert into public.transactions (
   payment_method,
   business_percentage,
   tax_deductible,
+  source_type,
+  amount_before_tax,
+  tax_amount,
+  amount_after_tax,
+  platform_fee,
+  net_amount,
   notes
 )
 values
@@ -261,6 +267,12 @@ values
     'credit_card',
     90,
     true,
+    null,
+    47.99,
+    6.24,
+    54.23,
+    0,
+    54.23,
     'Mostly business miles'
   ),
   (
@@ -277,6 +289,12 @@ values
     'apple_pay',
     100,
     true,
+    null,
+    15.93,
+    2.07,
+    18.00,
+    0,
+    18.00,
     null
   ),
   (
@@ -293,6 +311,12 @@ values
     'other',
     100,
     false,
+    'fare',
+    438.75,
+    0,
+    438.75,
+    0,
+    438.75,
     'Imported payout sample'
   ),
   (
@@ -309,6 +333,12 @@ values
     'debit_card',
     85,
     true,
+    null,
+    111.94,
+    14.55,
+    126.49,
+    0,
+    126.49,
     'Shared vehicle'
   ),
   (
@@ -325,6 +355,34 @@ values
     'other',
     100,
     false,
+    'fare',
+    312.60,
+    0,
+    312.60,
+    0,
+    312.60,
+    null
+  ),
+  (
+    'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb6',
+    '22222222-2222-2222-2222-222222222222',
+    null,
+    null,
+    'income',
+    226.00,
+    'CAD',
+    '2026-07-11',
+    'DoorDash',
+    'Today''s money received',
+    'other',
+    100,
+    false,
+    'fare',
+    226.00,
+    0,
+    226.00,
+    0,
+    226.00,
     null
   )
 on conflict (id) do update
@@ -340,6 +398,12 @@ set
   payment_method = excluded.payment_method,
   business_percentage = excluded.business_percentage,
   tax_deductible = excluded.tax_deductible,
+  source_type = excluded.source_type,
+  amount_before_tax = excluded.amount_before_tax,
+  tax_amount = excluded.tax_amount,
+  amount_after_tax = excluded.amount_after_tax,
+  platform_fee = excluded.platform_fee,
+  net_amount = excluded.net_amount,
   notes = excluded.notes,
   updated_at = now();
 

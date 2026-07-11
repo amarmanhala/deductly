@@ -1,4 +1,5 @@
 import {
+  createElement,
   useEffect,
   useMemo,
   useRef,
@@ -218,7 +219,7 @@ function ExpenseCategoryIcon({
 }) {
   const Icon = getExpenseCategoryIcon(icon, slug)
 
-  return <Icon className="size-4" />
+  return createElement(Icon, { className: "size-4" })
 }
 
 function getExpenseCategoryLookupKey(value: string) {
@@ -294,39 +295,10 @@ function getOptionalAmount(value: number | null | undefined) {
   return Number.isFinite(amount) ? amount : null
 }
 
-function getIncomeBeforeTax(transaction: Transaction) {
-  const amountBeforeTax = getOptionalAmount(transaction.amount_before_tax)
+function getIncomeReceived(transaction: Transaction) {
+  const netAmount = getOptionalAmount(transaction.net_amount)
 
-  return amountBeforeTax !== null
-    ? amountBeforeTax
-    : getTransactionAmount(transaction)
-}
-
-function getIncomeTaxAmount(transaction: Transaction, taxRate: number) {
-  const amountBeforeTax = getIncomeBeforeTax(transaction)
-  const amountAfterTax = getOptionalAmount(transaction.amount_after_tax)
-
-  if (amountAfterTax !== null) {
-    return Math.max(amountAfterTax - amountBeforeTax, 0)
-  }
-
-  const taxAmount = getOptionalAmount(transaction.tax_amount)
-
-  if (taxAmount !== null && taxAmount > 0) {
-    return taxAmount
-  }
-
-  return amountBeforeTax * taxRate
-}
-
-function getIncomeAfterTax(transaction: Transaction, taxRate: number) {
-  const amountAfterTax = getOptionalAmount(transaction.amount_after_tax)
-
-  if (amountAfterTax !== null) {
-    return amountAfterTax
-  }
-
-  return getIncomeBeforeTax(transaction) + getIncomeTaxAmount(transaction, taxRate)
+  return netAmount !== null ? netAmount : getTransactionAmount(transaction)
 }
 
 function getIncomeSource(transaction: Transaction) {
@@ -571,9 +543,9 @@ export function DashboardPage() {
         return total
       }
 
-      return total + getIncomeAfterTax(transaction, taxRate)
+      return total + getIncomeReceived(transaction)
     }, 0)
-  }, [taxRate, transactions])
+  }, [transactions])
   const incomeSourceRows = useMemo(() => {
     return Array.from(
       transactions
@@ -588,7 +560,7 @@ export function DashboardPage() {
           const source = getIncomeSource(transaction)
           const current = sources.get(source) ?? 0
 
-          sources.set(source, current + getIncomeAfterTax(transaction, taxRate))
+          sources.set(source, current + getIncomeReceived(transaction))
           return sources
         }, new Map<string, number>())
         .entries()
@@ -599,7 +571,7 @@ export function DashboardPage() {
         brandColor: getSourceBrandColor(source, businessTypes),
       }))
       .sort((left, right) => right.amount - left.amount)
-  }, [businessTypes, taxRate, transactions])
+  }, [businessTypes, transactions])
 
   useEffect(() => {
     let isMounted = true

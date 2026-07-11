@@ -58,11 +58,23 @@ function getStartOfToday() {
   return dateToInputValue(new Date())
 }
 
+function getEndOfToday() {
+  return dateToInputValue(new Date())
+}
+
 function getStartOfWeek() {
   const date = new Date()
   const day = date.getDay()
   const diff = day === 0 ? 6 : day - 1
   date.setDate(date.getDate() - diff)
+  return dateToInputValue(date)
+}
+
+function getEndOfWeek() {
+  const date = new Date()
+  const day = date.getDay()
+  const diff = day === 0 ? 0 : 7 - day
+  date.setDate(date.getDate() + diff)
   return dateToInputValue(date)
 }
 
@@ -72,20 +84,55 @@ function getStartOfMonth() {
   return dateToInputValue(date)
 }
 
-function getPeriodStart(period: ProfitPeriod) {
+function getEndOfMonth() {
+  const date = new Date()
+  date.setMonth(date.getMonth() + 1, 0)
+  return dateToInputValue(date)
+}
+
+function getPeriodRange(period: ProfitPeriod) {
   if (period === "week") {
-    return getStartOfWeek()
+    return {
+      start: getStartOfWeek(),
+      end: getEndOfWeek(),
+    }
   }
 
   if (period === "month") {
-    return getStartOfMonth()
+    return {
+      start: getStartOfMonth(),
+      end: getEndOfMonth(),
+    }
   }
 
-  return getStartOfToday()
+  return {
+    start: getStartOfToday(),
+    end: getEndOfToday(),
+  }
 }
 
 function getPeriodLabel(period: ProfitPeriod) {
   return profitPeriods.find((item) => item.value === period)?.label ?? "Today"
+}
+
+function isProfitPeriod(value: unknown): value is ProfitPeriod {
+  return profitPeriods.some((item) => item.value === value)
+}
+
+function getTransactionDateValue(transaction: Transaction) {
+  const dateMatch = transaction.transaction_date.match(/^\d{4}-\d{2}-\d{2}/)
+
+  if (dateMatch) {
+    return dateMatch[0]
+  }
+
+  const date = new Date(transaction.transaction_date)
+
+  if (Number.isNaN(date.getTime())) {
+    return transaction.transaction_date
+  }
+
+  return dateToInputValue(date)
 }
 
 function getTaxYearStart(taxYear: number) {
@@ -234,7 +281,7 @@ export function MyProfitPage() {
   const [period, setPeriod] = useState<ProfitPeriod>("today")
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
-  const periodStart = getPeriodStart(period)
+  const periodRange = getPeriodRange(period)
 
   useEffect(() => {
     let isMounted = true
@@ -312,9 +359,13 @@ export function MyProfitPage() {
   const categoryNameById = useMemo(() => {
     return new Map(categories.map((category) => [category.id, category.name]))
   }, [categories])
-  const periodTransactions = transactions.filter(
-    (transaction) => transaction.transaction_date >= periodStart
-  )
+  const periodTransactions = transactions.filter((transaction) => {
+    const transactionDate = getTransactionDateValue(transaction)
+
+    return (
+      transactionDate >= periodRange.start && transactionDate <= periodRange.end
+    )
+  })
   const taxYearStart = getTaxYearStart(taxYear)
   const taxYearEnd = getTaxYearEnd(taxYear)
   const taxYearTransactions = transactions.filter(
@@ -417,9 +468,14 @@ export function MyProfitPage() {
             </div>
             <Tabs
               value={period}
-              onValueChange={(value) => setPeriod(value as ProfitPeriod)}
+              onValueChange={(value) => {
+                if (isProfitPeriod(value)) {
+                  setPeriod(value)
+                }
+              }}
+              className="w-full sm:w-auto"
             >
-              <TabsList variant="line" className="ml-auto">
+              <TabsList className="ml-auto w-full sm:w-fit">
                 {profitPeriods.map((option) => (
                   <TabsTrigger key={option.value} value={option.value}>
                     {option.label}
