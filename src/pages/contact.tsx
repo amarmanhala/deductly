@@ -12,18 +12,18 @@ export function ContactPage() {
           to="/"
           className="mx-auto text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          Gig Ledger
+          Deductly
         </Link>
         <h1 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Contact Gig Ledger
+          Contact Deductly
         </h1>
         <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
           Have questions about tracking expenses, receipts, tax deductions, or
-          gig work records in Canada? Contact the Gig Ledger team.
+          gig work records in Canada? Contact the Deductly team.
         </p>
         <div className="mt-8">
-          <Button render={<a href="mailto:hello@gigledger.ca" />}>
-            hello@gigledger.ca
+          <Button render={<a href="mailto:hello@deductly.xyz" />}>
+            hello@deductly.xyz
           </Button>
         </div>
       </section>

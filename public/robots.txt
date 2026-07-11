@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /dashboard/
 
-Sitemap: https://gigledger.ca/sitemap.xml
+Sitemap: https://deductly.xyz/sitemap.xml

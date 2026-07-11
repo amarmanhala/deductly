@@ -6,6 +6,7 @@ import {
   getPageJsonLd,
   seoRoutes,
   siteName,
+  siteOrigin,
   type SeoRouteKey,
 } from "@/lib/seo"
 
@@ -47,8 +48,10 @@ export function Seo({ page }: { page: SeoRouteKey }) {
   useEffect(() => {
     const route = seoRoutes[page]
     const canonical = absoluteUrl(route.path)
-    const image = absoluteUrl(route.image ?? "/og/gig-expense-tracker-canada.svg")
+    const socialUrl = route.path === "/" ? siteOrigin : canonical
+    const image = absoluteUrl(route.image ?? "/og-image.png")
     const robots = route.robots ?? "index, follow"
+    const socialDescription = route.socialDescription ?? route.description
 
     document.title = route.title
     setMetaAttribute('meta[name="description"]', "content", route.description)
@@ -61,9 +64,9 @@ export function Seo({ page }: { page: SeoRouteKey }) {
     setMetaAttribute(
       'meta[property="og:description"]',
       "content",
-      route.description
+      socialDescription
     )
-    setMetaAttribute('meta[property="og:url"]', "content", canonical)
+    setMetaAttribute('meta[property="og:url"]', "content", socialUrl)
     setMetaAttribute('meta[property="og:image"]', "content", image)
     setMetaAttribute('meta[property="og:image:width"]', "content", "1200")
     setMetaAttribute('meta[property="og:image:height"]', "content", "630")
@@ -73,7 +76,7 @@ export function Seo({ page }: { page: SeoRouteKey }) {
     setMetaAttribute(
       'meta[name="twitter:description"]',
       "content",
-      route.description || defaultDescription
+      socialDescription || defaultDescription
     )
     setMetaAttribute('meta[name="twitter:image"]', "content", image)
 

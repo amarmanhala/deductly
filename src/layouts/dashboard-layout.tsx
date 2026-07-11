@@ -247,7 +247,7 @@ export function DashboardLayout() {
             to="/dashboard"
             className="mr-auto text-sm font-semibold tracking-tight"
           >
-            Gig Ledger
+            Deductly
           </Link>
 
           <DropdownMenu>

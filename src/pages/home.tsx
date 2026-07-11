@@ -50,9 +50,9 @@ export function HomePage() {
           <Link
             to="/"
             className="text-base font-semibold tracking-tight"
-            aria-label="Gig Ledger home"
+            aria-label="Deductly home"
           >
-            Gig Ledger
+            Deductly
           </Link>
 
           <nav className="flex items-center gap-2" aria-label="Main navigation">
@@ -72,7 +72,7 @@ export function HomePage() {
             Know what you earned, what you spent, and how to save more on taxes.
           </h1>
           <p className="max-w-2xl text-base leading-7 sm:text-lg">
-            Gig Ledger keeps your income, receipts, deductions, and tax
+            Deductly keeps your income, receipts, deductions, and tax
             set-asides in one clean view, so you can stop guessing and keep more
             of what you earn.
           </p>
@@ -106,7 +106,7 @@ export function HomePage() {
 
       <footer className="">
         <div className="mx-auto flex h-16 w-full max-w-6xl flex-col items-center justify-center gap-2 px-4 text-center text-sm text-muted-foreground sm:flex-row sm:justify-between sm:px-6 lg:px-8">
-          <p>Gig Ledger helps gig workers keep cleaner records.</p>
+          <p>Deductly helps gig workers keep cleaner records.</p>
           <nav
             className="flex items-center gap-4 text-xs"
             aria-label="Footer navigation"

@@ -136,7 +136,7 @@ export function LoginPage() {
 
         <CardFooter className="justify-center">
           <p className="text-sm text-muted-foreground">
-            New to Gig Ledger?{" "}
+            New to Deductly?{" "}
             <Link
               className="font-medium text-foreground underline-offset-4 hover:underline"
               to="/sign-up"

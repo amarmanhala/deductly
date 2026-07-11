@@ -11,7 +11,7 @@ export function TermsOfUsePage() {
           to="/"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          Gig Ledger
+          Deductly
         </Link>
         <h1 className="mt-8 text-4xl font-semibold tracking-tight">
           Terms of Use
@@ -20,9 +20,9 @@ export function TermsOfUsePage() {
 
         <div className="mt-10 flex flex-col gap-8 text-base leading-7">
           <section>
-            <h2 className="text-xl font-semibold">Use of Gig Ledger</h2>
+            <h2 className="text-xl font-semibold">Use of Deductly</h2>
             <p className="mt-3 text-muted-foreground">
-              Gig Ledger provides software for tracking gig work income,
+              Deductly provides software for tracking gig work income,
               receipts, deductible expenses, and tax set-asides. You are
               responsible for the accuracy of the information you enter.
             </p>

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gigledger.ca/</loc>
+    <loc>https://deductly.xyz/</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gigledger.ca/privacy-policy</loc>
+    <loc>https://deductly.xyz/privacy-policy</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gigledger.ca/terms-of-use</loc>
+    <loc>https://deductly.xyz/terms-of-use</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gigledger.ca/contact</loc>
+    <loc>https://deductly.xyz/contact</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>

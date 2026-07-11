@@ -1,10 +1,12 @@
-export const siteOrigin = "https://gigledger.ca"
-export const siteName = "Gig Ledger"
+export const siteOrigin = "https://deductly.xyz"
+export const siteName = "Deductly"
 export const siteLogo = `${siteOrigin}/gig-ledger-logo.svg`
 export const defaultTitle =
-  "Gig Expense Tracker Canada | Track Expenses & Save on Taxes"
+  "Deductly | Expense Tracker for Gig Workers"
 export const defaultDescription =
-  "Track fuel, parking, maintenance, insurance, receipts, mileage and tax deductible expenses in one place. Built for Uber, Uber Eats, DoorDash and gig workers across Canada."
+  "Track expenses, organize receipts, and maximize tax deductions. Built for Uber, Uber Eats, DoorDash, and gig workers in Canada."
+export const defaultSocialDescription =
+  "Track expenses, organize receipts, and maximize tax deductions. Built for gig workers."
 
 export type SeoRouteKey =
   | "home"
@@ -19,6 +21,7 @@ export type SeoMeta = {
   title: string
   description: string
   path: string
+  socialDescription?: string
   robots?: string
   image?: string
 }
@@ -27,45 +30,46 @@ export const seoRoutes: Record<SeoRouteKey, SeoMeta> = {
   home: {
     title: defaultTitle,
     description: defaultDescription,
+    socialDescription: defaultSocialDescription,
     path: "/",
-    image: "/og/gig-expense-tracker-canada.svg",
+    image: "/og-image.png",
   },
   privacy: {
-    title: "Privacy Policy | Gig Ledger",
+    title: "Privacy Policy | Deductly",
     description:
-      "Read the Gig Ledger privacy policy for Canadian gig workers using the expense tracker to organize income, receipts, deductions, and tax records.",
+      "Read the Deductly privacy policy for Canadian gig workers using the expense tracker to organize income, receipts, deductions, and tax records.",
     path: "/privacy-policy",
   },
   terms: {
-    title: "Terms of Use | Gig Ledger",
+    title: "Terms of Use | Deductly",
     description:
-      "Review the Gig Ledger terms of use for the Canadian gig worker expense tracker and tax preparation workspace.",
+      "Review the Deductly terms of use for the Canadian gig worker expense tracker and tax preparation workspace.",
     path: "/terms-of-use",
   },
   contact: {
-    title: "Contact Gig Ledger | Gig Worker Expense Tracker Canada",
+    title: "Contact Deductly | Gig Worker Expense Tracker Canada",
     description:
-      "Contact Gig Ledger about expense tracking, receipt management, and tax-ready records for Canadian gig workers and independent contractors.",
+      "Contact Deductly about expense tracking, receipt management, and tax-ready records for Canadian gig workers and independent contractors.",
     path: "/contact",
   },
   login: {
-    title: "Log in | Gig Ledger",
+    title: "Log in | Deductly",
     description:
-      "Log in to Gig Ledger to access your Canadian gig work income, expenses, receipts, and tax set-aside records.",
+      "Log in to Deductly to access your Canadian gig work income, expenses, receipts, and tax set-aside records.",
     path: "/login",
     robots: "noindex, nofollow",
   },
   signup: {
-    title: "Create Account | Gig Ledger",
+    title: "Create Account | Deductly",
     description:
-      "Create a Gig Ledger account to track gig work expenses, receipts, deductions, and tax set-asides in Canada.",
+      "Create a Deductly account to track gig work expenses, receipts, deductions, and tax set-asides in Canada.",
     path: "/sign-up",
     robots: "noindex, nofollow",
   },
   dashboard: {
-    title: "Dashboard | Gig Ledger",
+    title: "Dashboard | Deductly",
     description:
-      "Private Gig Ledger dashboard for income, expenses, receipts, and tax-ready records.",
+      "Private Deductly dashboard for income, expenses, receipts, and tax-ready records.",
     path: "/dashboard",
     robots: "noindex, nofollow",
   },

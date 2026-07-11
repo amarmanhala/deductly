@@ -11,7 +11,7 @@ export function PrivacyPolicyPage() {
           to="/"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          Gig Ledger
+          Deductly
         </Link>
         <h1 className="mt-8 text-4xl font-semibold tracking-tight">
           Privacy Policy
@@ -22,7 +22,7 @@ export function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl font-semibold">Information we collect</h2>
             <p className="mt-3 text-muted-foreground">
-              Gig Ledger may collect account details, business profile
+              Deductly may collect account details, business profile
               information, transactions, receipt metadata, and app usage data
               that helps Canadian gig workers organize income, expenses,
               deductions, and tax-ready records.
@@ -41,7 +41,7 @@ export function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl font-semibold">Your records</h2>
             <p className="mt-3 text-muted-foreground">
-              Gig Ledger is designed to help independent contractors keep
+              Deductly is designed to help independent contractors keep
               business records organized. It does not replace professional tax,
               accounting, or legal advice.
             </p>
